@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El Puente de La Porcada · Takyma Investment Pioneer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+    --color-bg:#0c0c0d;
+    --color-surface:rgba(22,22,26,0.85);
+    --color-surface-light:rgba(31,31,36,0.95);
+    --color-primary:#d4b483;
+    --color-primary-bright:#e8cf9e;
+    --color-eco:#8f9b77;
+    --color-sec:#a07c7c;
+    --color-text:#f5f5f5;
+    --color-text-muted:#9a9a9a;
+    --color-border:rgba(255,255,255,0.08);
+    --font-serif:'Cormorant Garamond',serif;
+    --font-sans:'Montserrat',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+    font-family:var(--font-sans);
+    background:#000;
+    color:var(--color-text);
+    line-height:1.6;
+    font-weight:300;
+    font-size:16px;
+    overflow-x:hidden;
+}
+h1,h2,h3,h4{font-family:var(--font-serif);color:var(--color-text);line-height:1.25;letter-spacing:.01em;font-weight:500}
+h1{font-size:2.8rem;text-transform:uppercase;letter-spacing:4px}
+h2{font-size:2rem;margin-bottom:.6em;text-transform:uppercase;letter-spacing:3px}
+h3{font-size:1.35rem;margin-bottom:.4em;color:var(--color-primary-bright);text-transform:uppercase;letter-spacing:2px}
+h4{font-size:1.05rem;color:var(--color-text);font-weight:500;text-transform:uppercase;letter-spacing:1.5px}
+p{margin-bottom:1em}
+a{color:var(--color-primary-bright);text-decoration:none}
+a:hover{text-decoration:underline}
+ul,ol{margin:0 0 1em 1.4em}
+li{margin-bottom:.5em}
+strong{color:var(--color-primary-bright);font-weight:500}
+
+/* === TOP BAR === */
+.top-bar{
+    position:sticky;top:0;z-index:50;
+    background:rgba(12,12,13,0.92);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--color-border);
+    padding:.8rem 2rem;
+}
+.top-bar .wrap{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.top-bar .brand{display:flex;align-items:center;gap:.8rem}
+.top-bar .brand .logo-mark{max-height:42px;max-width:160px;object-fit:contain;filter:brightness(1.2) drop-shadow(0 0 12px rgba(212,180,131,0.15))}
+.top-bar .brand .divider{width:1px;height:30px;background:var(--color-border)}
+.top-bar .brand .brand-text{font-family:var(--font-serif);color:var(--color-primary-bright);font-size:1.1rem;font-weight:500;letter-spacing:2px;text-transform:uppercase}
+.lang-btn{
+    background:rgba(22,22,26,0.6);
+    border:1px solid var(--color-primary);
+    color:var(--color-primary);
+    padding:8px 18px;
+    font-family:var(--font-sans);
+    font-weight:500;
+    cursor:pointer;
+    border-radius:50px;
+    transition:all .4s ease;
+    text-transform:uppercase;
+    letter-spacing:2px;
+    font-size:.72rem;
+    backdrop-filter:blur(8px);
+}
+.lang-btn:hover{
+    background:var(--color-primary);
+    color:#0c0c0d;
+    box-shadow:0 4px 15px rgba(212,180,131,0.3);
+}
+
+/* === HERO === */
+.hero{
+    padding:5rem 2rem 4rem;
+    background:radial-gradient(ellipse at top, rgba(212,180,131,0.04) 0%, transparent 60%), #0c0c0d;
+    border-bottom:1px solid var(--color-border);
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+}
+.hero::before{
+    content:'';
+    position:absolute;inset:0;
+    background:radial-gradient(ellipse at center,rgba(212,180,131,0.06) 0%,transparent 70%);
+    pointer-events:none;
+}
+.hero .wrap{max-width:1100px;margin:0 auto;position:relative;z-index:1}
+.hero .hero-logo{
+    max-height:120px;max-width:280px;object-fit:contain;
+    margin:0 auto 2rem;display:block;
+    filter:brightness(1.3) drop-shadow(0 0 24px rgba(212,180,131,0.2));
+    opacity:0;
+    animation:fadeInUp 1s ease .2s both;
+}
+.hero .eyebrow{color:var(--color-primary);font-size:.8rem;letter-spacing:.5em;text-transform:uppercase;margin-bottom:1.2rem;font-weight:500}
+.hero h1{
+    font-family:var(--font-serif);
+    font-size:3.4rem;margin-bottom:1rem;
+    text-transform:uppercase;letter-spacing:4px;
+    text-shadow:0 4px 15px rgba(0,0,0,0.9);
+    animation:fadeInUp 1s ease .4s both;
+}
+.hero h1 .accent{color:var(--color-primary-bright);font-style:italic}
+.hero .sub{
+    font-size:1.1rem;color:var(--color-text-muted);max-width:820px;margin:0 auto 2rem;
+    font-weight:300;line-height:1.75;
+    animation:fadeInUp 1s ease .6s both;
+}
+.hero .meta{
+    display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;margin-top:2.5rem;
+    animation:fadeInUp 1s ease .8s both;
+}
+.hero .meta .item{
+    border-left:1px solid var(--color-primary);
+    padding-left:1.2rem;text-align:left;
+}
+.hero .meta .item .k{font-size:.7rem;color:var(--color-text-muted);text-transform:uppercase;letter-spacing:.2em;margin-bottom:.3rem}
+.hero .meta .item .v{font-size:.95rem;color:var(--color-text);font-family:var(--font-serif);font-weight:500;letter-spacing:1px}
+
+/* === ILLUSTRATION HERO === */
+.hero-illustration{
+    width:100%;max-width:1200px;margin:3rem auto 0;
+    border:1px solid var(--color-primary);
+    border-radius:4px;
+    overflow:hidden;
+    box-shadow:0 30px 80px rgba(0,0,0,0.7),0 0 60px rgba(212,180,131,0.08);
+    position:relative;
+    animation:fadeInUp 1.5s ease 1s both;
+}
+.hero-illustration img{display:block;width:100%;height:auto}
+.hero-illustration .caption{
+    position:absolute;bottom:0;left:0;right:0;
+    background:linear-gradient(0deg,rgba(0,0,0,0.85) 0%,transparent 100%);
+    padding:2rem 1.5rem 1rem;
+    color:var(--color-text);
+    font-family:var(--font-serif);
+    font-style:italic;
+    font-size:.95rem;
+    letter-spacing:1px;
+}
+.hero-illustration .caption strong{color:var(--color-primary-bright)}
+
+/* === SECTIONS === */
+section{padding:4.5rem 2rem;border-bottom:1px solid var(--color-border);position:relative}
+section .wrap{max-width:1200px;margin:0 auto}
+section .lead{font-size:1rem;color:var(--color-text-muted);margin-bottom:2rem;max-width:860px;line-height:1.75}
+
+/* === MANIFESTO === */
+.manifesto{
+    background:radial-gradient(ellipse at center,rgba(212,180,131,0.04) 0%,transparent 70%), #0c0c0d;
+    text-align:center;
+    padding:6rem 2rem;
+    border-bottom:1px solid var(--color-border);
+}
+.manifesto .wrap{max-width:880px;margin:0 auto}
+.manifesto .opening{
+    font-family:var(--font-serif);
+    font-style:italic;
+    color:var(--color-primary-bright);
+    font-size:1.6rem;
+    line-height:1.5;
+    margin-bottom:2rem;
+    letter-spacing:1px;
+}
+.manifesto .opening::before, .manifesto .opening::after{
+    content:'❝';
+    color:var(--color-primary);
+    font-size:2.5rem;
+    vertical-align:-.5em;
+    margin:0 .5rem;
+    opacity:.6;
+}
+.manifesto .opening::after{content:'❞';}
+.manifesto .closing{
+    font-family:var(--font-serif);
+    color:var(--color-text);
+    font-size:1.2rem;
+    margin-top:1.5rem;
+    letter-spacing:1px;
+}
+.manifesto .signature{
+    margin-top:3rem;
+    padding-top:2rem;
+    border-top:1px solid var(--color-border);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:1.5rem;
+    flex-wrap:wrap;
+}
+.manifesto .signature .sig-logo{max-height:50px;max-width:140px;object-fit:contain;filter:brightness(1.2)}
+.manifesto .signature .sig-text{
+    font-family:var(--font-serif);
+    color:var(--color-primary-bright);
+    font-style:italic;
+    font-size:.95rem;
+    letter-spacing:2px;
+    text-transform:uppercase;
+}
+
+/* === PHOTO BLOCK === */
+.photo-block{
+    width:100%;
+    max-width:1100px;
+    margin:2.5rem 0;
+    border:1px solid var(--color-border);
+    border-radius:4px;
+    overflow:hidden;
+    box-shadow:0 15px 40px rgba(0,0,0,0.5);
+}
+.photo-block img{display:block;width:100%;height:auto}
+.photo-block .photo-caption{
+    padding:1rem 1.4rem;
+    background:rgba(12,12,13,0.9);
+    backdrop-filter:blur(8px);
+    border-top:1px solid var(--color-primary);
+    color:var(--color-text-muted);
+    font-size:.82rem;
+    letter-spacing:1px;
+    font-family:var(--font-serif);
+    font-style:italic;
+}
+.photo-block .photo-caption strong{color:var(--color-primary-bright);font-weight:500}
+
+/* === CARDS GRID === */
+.grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.5rem;margin:2rem 0}
+.card{
+    background:var(--color-surface);
+    backdrop-filter:blur(12px);
+    border:1px solid var(--color-border);
+    padding:1.8rem 1.5rem;
+    border-radius:2px;
+    transition:all .4s ease;
+    position:relative;
+    overflow:hidden;
+}
+.card::after{
+    content:'';position:absolute;bottom:0;left:0;width:100%;height:2px;
+    background:var(--color-primary);
+    transform:scaleX(0);transform-origin:left;
+    transition:transform .4s ease;
+}
+.card:hover{
+    background:var(--color-surface-light);
+    border-color:rgba(212,180,131,0.3);
+    box-shadow:0 15px 30px rgba(0,0,0,0.4);
+    transform:translateY(-5px);
+}
+.card:hover::after{transform:scaleX(1)}
+.card .num{font-family:var(--font-serif);font-size:2.6rem;color:var(--color-primary);font-weight:500;line-height:1;margin-bottom:.6rem}
+.card .tag{display:inline-block;background:rgba(212,180,131,0.08);color:var(--color-primary-bright);padding:.2em .8em;border-radius:2px;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;margin-bottom:1rem;font-weight:600;border:1px solid rgba(212,180,131,0.2)}
+.card p{font-size:.92rem;color:var(--color-text-muted);line-height:1.6}
+
+/* === KEY STATS === */
+.key-stats{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+    gap:1.5rem;
+    margin:2.5rem 0;
+    padding:2rem 1rem;
+    background:linear-gradient(135deg,rgba(212,180,131,0.04),transparent);
+    border-top:1px solid var(--color-primary);
+    border-bottom:1px solid var(--color-primary);
+}
+.stat{
+    text-align:center;
+    padding:1rem;
+    position:relative;
+}
+.stat:not(:last-child)::after{
+    content:'';
+    position:absolute;
+    right:0;top:20%;height:60%;width:1px;
+    background:var(--color-border);
+}
+.stat .stat-num{
+    font-family:var(--font-serif);
+    font-size:3rem;
+    color:var(--color-primary-bright);
+    font-weight:500;
+    line-height:1;
+    margin-bottom:.4rem;
+    letter-spacing:-.02em;
+}
+.stat .stat-unit{
+    font-family:var(--font-sans);
+    color:var(--color-text-muted);
+    font-size:.7rem;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    font-weight:500;
+}
+
+/* === TABLES === */
+table.cmp{
+    width:100%;
+    border-collapse:collapse;
+    background:var(--color-surface);
+    border-radius:2px;
+    overflow:hidden;
+    margin:2rem 0;
+    font-size:.9rem;
+    border:1px solid var(--color-border);
+}
+table.cmp th,table.cmp td{padding:.85rem 1rem;text-align:left;border-bottom:1px solid var(--color-border)}
+table.cmp th{background:rgba(212,180,131,0.05);color:var(--color-primary-bright);font-weight:500;text-transform:uppercase;font-size:.72rem;letter-spacing:.18em;border-bottom:1px solid var(--color-primary)}
+table.cmp td{color:var(--color-text-muted)}
+table.cmp td strong{color:var(--color-text)}
+table.cmp tr:last-child td{border-bottom:0}
+table.cmp tr:hover td{background:rgba(212,180,131,0.03)}
+table.cost-table th,table.cost-table td{font-size:.88rem}
+table.cost-table .num{text-align:right;font-variant-numeric:tabular-nums;color:var(--color-primary-bright);font-weight:500}
+table.cmp tr.total td{background:rgba(212,180,131,0.05);border-top:1px solid var(--color-primary)}
+
+/* === CALLOUT === */
+.callout{
+    background:linear-gradient(135deg,rgba(212,180,131,0.05),transparent);
+    border-left:2px solid var(--color-primary);
+    padding:1.4rem 1.6rem;
+    border-radius:0 2px 2px 0;
+    margin:1.8rem 0;
+}
+.callout.warn{background:linear-gradient(135deg,rgba(160,124,124,0.06),transparent);border-left-color:var(--color-sec)}
+.callout.eco{background:linear-gradient(135deg,rgba(143,155,119,0.06),transparent);border-left-color:var(--color-eco)}
+.callout h4{margin-bottom:.4rem;color:var(--color-primary-bright);text-transform:uppercase;letter-spacing:2px;font-size:.85rem}
+.callout.warn h4{color:var(--color-sec)}
+.callout.eco h4{color:var(--color-eco)}
+.callout p{margin:0;color:var(--color-text-muted);font-size:.92rem;line-height:1.7}
+
+/* === GALLERY === */
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(450px,1fr));
+    gap:2rem;
+    margin:2.5rem 0;
+}
+@media(max-width:600px){.gallery{grid-template-columns:1fr}}
+.gallery-item{
+    background:var(--color-surface);
+    border:1px solid var(--color-border);
+    border-top:2px solid var(--color-primary);
+    border-radius:2px;
+    overflow:hidden;
+    transition:all .4s ease;
+    box-shadow:0 15px 40px rgba(0,0,0,0.5);
+}
+.gallery-item:hover{
+    transform:translateY(-5px);
+    border-top-color:var(--color-primary-bright);
+    box-shadow:0 25px 60px rgba(0,0,0,0.7),0 0 30px rgba(212,180,131,0.1);
+}
+.gallery-item img{
+    display:block;
+    width:100%;
+    height:auto;
+    max-width:100%;
+    object-fit:cover;
+    transition:transform .6s ease;
+}
+.gallery-item:hover img{transform:scale(1.03)}
+.gallery-caption{
+    padding:1.4rem 1.5rem;
+    background:linear-gradient(180deg,var(--color-surface-light),var(--color-surface));
+    border-top:1px solid var(--color-border);
+    display:flex;
+    gap:1.2rem;
+    align-items:flex-start;
+}
+.gallery-num{
+    font-family:var(--font-serif);
+    font-size:2.2rem;
+    color:var(--color-primary);
+    font-weight:500;
+    line-height:1;
+    opacity:.7;
+    flex-shrink:0;
+}
+.gallery-text h4{
+    font-size:.95rem;
+    margin:0 0 .4rem 0;
+    text-transform:uppercase;
+    letter-spacing:1.5px;
+    color:var(--color-primary-bright);
+}
+.gallery-text p{
+    font-size:.85rem;
+    color:var(--color-text-muted);
+    line-height:1.6;
+    margin:0;
+}
+
+/* === REFERENCES GRID === */
+.refs-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:1.5rem;
+    margin:2rem 0;
+}
+.ref-card{
+    background:var(--color-surface);
+    border:1px solid var(--color-border);
+    border-top:2px solid var(--color-primary);
+    border-radius:2px;
+    padding:1.4rem 1.2rem;
+    transition:all .3s ease;
+}
+.ref-card:hover{border-color:rgba(212,180,131,0.3);transform:translateY(-3px)}
+.ref-card .ref-name{font-family:var(--font-serif);font-size:1.1rem;color:var(--color-text);margin-bottom:.3rem;font-weight:500;letter-spacing:1px}
+.ref-card .ref-loc{font-size:.75rem;color:var(--color-primary-bright);letter-spacing:.15em;text-transform:uppercase;margin-bottom:.7rem}
+.ref-card .ref-note{font-size:.82rem;color:var(--color-text-muted);line-height:1.5}
+
+/* === FOOTER === */
+footer{
+    padding:3rem 2rem 2rem;
+    background:linear-gradient(180deg,#0c0c0d 0%,#000 100%);
+    border-top:1px solid var(--color-border);
+    text-align:center;
+}
+footer .wrap{max-width:1200px;margin:0 auto}
+footer .eco-logo{max-height:60px;max-width:200px;object-fit:contain;margin:0 auto 1.5rem;display:block;filter:brightness(1.2) drop-shadow(0 4px 15px rgba(0,0,0,0.8))}
+footer .sig{
+    font-family:var(--font-serif);
+    color:var(--color-primary-bright);
+    font-size:1.1rem;margin-bottom:.5rem;
+    letter-spacing:3px;text-transform:uppercase;font-weight:500;
+}
+footer .tagline{color:var(--color-text-muted);font-size:.75rem;letter-spacing:.3em;text-transform:uppercase;margin-bottom:1.5rem}
+footer .copyright{
+    color:var(--color-text-muted);font-size:.78rem;
+    padding-top:1.5rem;border-top:1px solid var(--color-border);
+    margin-top:1.5rem;
+    letter-spacing:1px;
+}
+footer .copyright strong{color:var(--color-primary-bright);font-weight:500}
+
+/* === ANIMATIONS === */
+@keyframes fadeInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+section .wrap{animation:fadeIn .8s ease-out both}
+
+/* === BADGE === */
+.badge{display:inline-block;background:transparent;color:var(--color-primary-bright);padding:.15em .55em;border-radius:2px;font-size:.66rem;letter-spacing:.15em;text-transform:uppercase;font-weight:600;margin-left:.5rem;vertical-align:middle;border:1px solid var(--color-primary)}
+
+/* Mobile */
+@media(max-width:768px){
+    .top-bar .wrap{flex-direction:column;gap:.8rem}
+    .hero h1{font-size:2.2rem;letter-spacing:2px}
+    section{padding:3rem 1.2rem}
+    h2{font-size:1.6rem;letter-spacing:2px}
+    .manifesto .opening{font-size:1.3rem}
+    .key-stats{grid-template-columns:1fr 1fr}
+    .stat:not(:last-child)::after{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ TOP BAR ============ -->
+<div class="top-bar">
+    <div class="wrap">
+        <div class="brand">
+            <img src="images/LOGO.PNG" alt="Takyma Investment Pioneer" class="logo-mark" onerror="this.style.display='none'">
+            <div class="divider"></div>
+            <div class="brand-text">La Porcada</div>
+        </div>
+        <button class="lang-btn" onclick="toggleLanguage()" id="langBtn">🌐 English</button>
+    </div>
+</div>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+    <div class="wrap">
+        <img src="images/LOGO.PNG" alt="Takyma Investment Pioneer" class="hero-logo" onerror="this.style.display='none'">
+        <div class="eyebrow" data-es="Manifiesto Arquitectónico · 2026" data-en="Architectural Manifesto · 2026">Manifiesto Arquitectónico · 2026</div>
+        <h1><span data-es="El Puente de" data-en="The Bridge of">El Puente de</span> <span class="accent" data-es="La Porcada" data-en="La Porcada">La Porcada</span></h1>
+        <p class="sub" data-es="No un puente para cruzar un río. Un icono para que el mundo recuerde dónde está La Porcada. La tarjeta de presentación del resort — como Lo Passador definió el Delta del Ebro en 2011, este puente definirá La Porcada en el imaginario del lujo global del siglo XXI." data-en="Not a bridge to cross a river. An icon for the world to remember where La Porcada is. The calling card of the resort — as Lo Passador defined the Ebro Delta in 2011, this bridge will define La Porcada in the imagination of global luxury in the 21st century.">No un puente para cruzar un río. Un icono para que el mundo recuerde dónde está La Porcada. La tarjeta de presentación del resort — como Lo Passador definió el Delta del Ebro en 2011, este puente definirá La Porcada en el imaginario del lujo global del siglo XXI.</p>
+        <div class="meta">
+            <div class="item"><div class="k" data-es="Luz" data-en="Span">Luz</div><div class="v">152 m</div></div>
+            <div class="item"><div class="k" data-es="Tipología" data-en="Typology">Tipología</div><div class="v" data-es="Atirantado" data-en="Cable-stayed">Atirantado</div></div>
+            <div class="item"><div class="k" data-es="Sistema" data-en="System">Sistema</div><div class="v">CLT + Acero + Epoxy</div></div>
+            <div class="item"><div class="k" data-es="Resistencia" data-en="Resistance">Resistencia</div><div class="v">Mw 9.0</div></div>
+        </div>
+
+        <div class="hero-illustration">
+            <img src="images/ILUSTRACION-PUENTE.PNG" alt="Ilustración del Puente de La Porcada" onerror="this.parentElement.style.display='none'">
+            <div class="caption">
+                <strong data-es="Concepto visual" data-en="Visual concept">Concepto visual</strong> · <span data-es="Puente atirantado peatonal, luz única 152 m, pilonos en acero galvanizado + epoxy, tablero CLT, iluminación cálida LED. Render conceptual." data-en="Cable-stayed pedestrian bridge, single 152 m span, galvanized steel + epoxy pylons, CLT deck, warm LED lighting. Conceptual render.">Puente atirantado peatonal, luz única 152 m, pilonos en acero galvanizado + epoxy, tablero CLT, iluminación cálida LED. Render conceptual.</span>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- ============ MANIFESTO ============ -->
+<section class="manifesto">
+    <div class="wrap">
+        <div class="opening" data-es="Un puente nunca es solo un puente cuando se concibe como declaración. El Delta del Ebro no construyó Lo Passador en 2011 para cruzar el río entre Deltebre y Sant Jaume d'Enveja — lo construyó para que el mundo supiera que el Delta existía como destino natural irrepetible. La Porcada no construye este puente para cruzar 152 metros de río. Lo construye para que el mundo sepa que existe un lugar donde el lujo vuelve a tener alma." data-en="A bridge is never just a bridge when it is conceived as a statement. The Ebro Delta did not build Lo Passador in 2011 to cross the river between Deltebre and Sant Jaume d'Enveja — it built it so the world would know the Delta existed as an unrepeatable natural destination. La Porcada is not building this bridge to cross 152 meters of river. It is building it so the world knows there is a place where luxury has soul again.">Un puente nunca es solo un puente cuando se concibe como declaración. El Delta del Ebro no construyó Lo Passador en 2011 para cruzar el río entre Deltebre y Sant Jaume d'Enveja — lo construyó para que el mundo supiera que el Delta existía como destino natural irrepetible. La Porcada no construye este puente para cruzar 152 metros de río. Lo construye para que el mundo sepa que existe un lugar donde el lujo vuelve a tener alma.</div>
+        <div class="closing" data-es="El Puente de La Porcada no será fotografiado. Será la fotografía." data-en="The La Porcada Bridge will not be photographed. It will be the photograph.">El Puente de La Porcada no será fotografiado. Será la fotografía.</div>
+        <div class="signature">
+            <img src="images/LOGO.PNG" alt="Takyma" class="sig-logo" onerror="this.style.display='none'">
+            <div class="sig-text" data-es="Takyma Investment Pioneer · 2026" data-en="Takyma Investment Pioneer · 2026">Takyma Investment Pioneer · 2026</div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ SITE PHOTO ============ -->
+<section>
+    <div class="wrap">
+        <h2 data-es="El Sitio · 152 metros de luz" data-en="The Site · 152 meters of span">El Sitio · 152 metros de luz</h2>
+        <p class="lead" data-es="El río que separa las dos zonas de la isla — villas de playa al oeste, servicios comunes al este — exige un solo gesto arquitectónico: cruzar 152 metros sin tocar el agua. La foto aérea con la herramienta de medición confirma la luz exacta." data-en="The river that separates the two zones of the island — beach villas to the west, common services to the east — demands a single architectural gesture: cross 152 meters without touching the water. The aerial photo with the measurement tool confirms the exact span.">El río que separa las dos zonas de la isla — villas de playa al oeste, servicios comunes al este — exige un solo gesto arquitectónico: cruzar 152 metros sin tocar el agua. La foto aérea con la herramienta de medición confirma la luz exacta.</p>
+
+        <div class="photo-block">
+            <img src="images/PUENTE.PNG" alt="Sitio del puente — medición 152 metros">
+            <div class="photo-caption">
+                <strong data-es="Luz medida" data-en="Measured span">Luz medida</strong>: 151.88 m en mapa / 152.15 m sobre terreno · <strong data-es="Orientación" data-en="Orientation">Orientación</strong>: 72.61° (E-W) · <span data-es="Fuente: Google Earth, medición interna." data-en="Source: Google Earth, internal measurement.">Fuente: Google Earth, medición interna.</span>
+            </div>
+        </div>
+
+        <div class="callout">
+            <h4 data-es="Por qué cruzar el río, no bordearlo" data-en="Why cross the river, not go around it">Por qué cruzar el río, no bordearlo</h4>
+            <p data-es="La alternativa sería una carretera perimetral de 1.5 km. Costaría menos pero sacrificaría 0.8 ha de manglar, fragmentaría la isla con una infraestructura de vehicles, y mataría el argumento de pedestrianización total que define el lujo contemporáneo (Aman, Six Senses, Nihi). El puente atirantado de luz única es la única respuesta arquitectónica digna de un proyecto de este calibre." data-en="The alternative would be a 1.5 km perimeter road. It would cost less but would sacrifice 0.8 ha of mangrove, fragment the island with vehicle infrastructure, and kill the total pedestrianization argument that defines contemporary luxury (Aman, Six Senses, Nihi). The single-span cable-stayed bridge is the only architectural answer worthy of a project of this caliber.">La alternativa sería una carretera perimetral de 1.5 km. Costaría menos pero sacrificaría 0.8 ha de manglar, fragmentaría la isla con una infraestructura de vehicles, y mataría el argumento de pedestrianización total que define el lujo contemporáneo (Aman, Six Senses, Nihi). El puente atirantado de luz única es la única respuesta arquitectónica digna de un proyecto de este calibre.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ============ VISUAL GALLERY ============ -->
+<section>
+    <div class="wrap">
+        <h2 data-es="Galería Visual · Cuatro Vistas" data-en="Visual Gallery · Four Views">Galería Visual · Cuatro Vistas</h2>
+        <p class="lead" data-es="El Puente de La Porcada imaginado desde cuatro perspectivas complementarias. La vista aérea lo muestra como gesto arquitectónico completo. La vista de playa lo muestra como lo verá el huésped al llegar. La vista del tablero muestra la experiencia de cruzarlo. La vista nocturna muestra cómo se convertirá en el icono luminoso del resort." data-en="The La Porcada Bridge imagined from four complementary perspectives. The aerial view shows it as a complete architectural gesture. The beach view shows it as the guest will see it upon arrival. The deck view shows the experience of crossing it. The night view shows how it will become the luminous icon of the resort.">El Puente de La Porcada imaginado desde cuatro perspectivas complementarias. La vista aérea lo muestra como gesto arquitectónico completo. La vista de playa lo muestra como lo verá el huésped al llegar. La vista del tablero muestra la experiencia de cruzarlo. La vista nocturna muestra cómo se convertirá en el icono luminoso del resort.</p>
+
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="images/ILUSTRACION-PUENTE.PNG" alt="Vista aérea del puente">
+                <div class="gallery-caption">
+                    <div class="gallery-num">01</div>
+                    <div class="gallery-text">
+                        <h4 data-es="Vista Aérea" data-en="Aerial View">Vista Aérea</h4>
+                        <p data-es="El gesto arquitectónico completo. La arpa de cables dorados dibujando el perfil que definirá la silueta de La Porcada en postales, webs y revistas." data-en="The complete architectural gesture. The harp of golden cables drawing the profile that will define the silhouette of La Porcada in postcards, websites and magazines.">El gesto arquitectónico completo. La arpa de cables dorados dibujando el perfil que definirá la silueta de La Porcada en postales, webs y revistas.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/VISTA-PLAYA.PNG" alt="Vista desde la playa">
+                <div class="gallery-caption">
+                    <div class="gallery-num">02</div>
+                    <div class="gallery-text">
+                        <h4 data-es="Vista Playa · Hora Dorada" data-en="Beach View · Golden Hour">Vista Playa · Hora Dorada</h4>
+                        <p data-es="La llegada del huésped. Sale de su villa de playa y levanta la vista: el puente se eleva dorado contra el cielo. Esta es la foto que condiciona toda la experiencia. Esta es la foto que La Porcada regala al mundo." data-en="The guest's arrival. Steps out of their beach villa and looks up: the bridge rises golden against the sky. This is the photo that conditions the entire experience. This is the photo La Porcada gives to the world.">La llegada del huésped. Sale de su villa de playa y levanta la vista: el puente se eleva dorado contra el cielo. Esta es la foto que condiciona toda la experiencia. Esta es la foto que La Porcada regala al mundo.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/VISTA-TABLERO.PNG" alt="Vista desde el tablero">
+                <div class="gallery-caption">
+                    <div class="gallery-num">03</div>
+                    <div class="gallery-text">
+                        <h4 data-es="Vista Tablero · Experiencia Peatonal" data-en="Deck View · Pedestrian Experience">Vista Tablero · Experiencia Peatonal</h4>
+                        <p data-es="Lo que se siente cruzarlo. Travertino bajo los pies, vidrio a los lados, la arpa de cables dorados sobre la cabeza. Sensación de flotar sobre el río sin tocarlo. Esta es la experiencia que justifica el capex." data-en="What it feels like to cross it. Travertine underfoot, glass on the sides, the harp of golden cables overhead. Sensation of floating over the river without touching it. This is the experience that justifies the capex.">Lo que se siente cruzarlo. Travertino bajo los pies, vidrio a los lados, la arpa de cables dorados sobre la cabeza. Sensación de flotar sobre el río sin tocarlo. Esta es la experiencia que justifica el capex.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/VISTA-NOCHE.PNG" alt="Vista nocturna">
+                <div class="gallery-caption">
+                    <div class="gallery-num">04</div>
+                    <div class="gallery-text">
+                        <h4 data-es="Vista Noche · Icono Luminoso" data-en="Night View · Luminous Icon">Vista Noche · Icono Luminoso</h4>
+                        <p data-es="El puente como firma visual del resort tras el ocaso. LED warm en cables y barandilla, pavimento photoluminiscente guiando el paso, reflejos bioluminiscentes en el agua. Cero light pollution hacia el manglar. Argumento ESG cuantificable." data-en="The bridge as the resort's visual signature after sunset. Warm LED on cables and railing, photoluminescent pavement guiding the step, bioluminescent reflections on the water. Zero light pollution towards the mangrove. Quantifiable ESG argument.">El puente como firma visual del resort tras el ocaso. LED warm en cables y barandilla, pavimento photoluminiscente guiando el paso, reflejos bioluminiscentes en el agua. Cero light pollution hacia el manglar. Argumento ESG cuantificable.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="callout">
+            <h4 data-es="Lectura estratégica" data-en="Strategic reading">Lectura estratégica</h4>
+            <p data-es="Cuatro vistas = cuatro argumentos de venta. La aérea vende el gesto al inversor. La de playa vende el sueño al comprador. La de tablero vende la experiencia al huésped. La nocturna vende el icono al mundo. Una sola estructura, cuatro mensajes, una marca." data-en="Four views = four sales arguments. The aerial sells the gesture to the investor. The beach sells the dream to the buyer. The deck sells the experience to the guest. The night sells the icon to the world. One structure, four messages, one brand.">Cuatro vistas = cuatro argumentos de venta. La aérea vende el gesto al inversor. La de playa vende el sueño al comprador. La de tablero vende la experiencia al huésped. La nocturna vende el icono al mundo. Una sola estructura, cuatro mensajes, una marca.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ============ KEY STATS ============ -->
+<section>
+    <div class="wrap">
+        <h2 data-es="Datos Clave" data-en="Key Data">Datos Clave</h2>
+        <p class="lead" data-es="Los parámetros de diseño del Puente de La Porcada. Cada cifra está calibrada contra el escenario sísmico Mw 9.0, la marea macareal del Pacífico panameño (5-6 m) y el sistema constructivo triángulo mágico (CLT + acero galvanizado + epoxy) ya establecido en el Plan Director." data-en="The design parameters of the La Porcada Bridge. Each figure is calibrated against the Mw 9.0 seismic scenario, the macareal tide of the Panamanian Pacific (5-6 m), and the magic triangle construction system (CLT + galvanized steel + epoxy) already established in the Master Plan.">Los parámetros de diseño del Puente de La Porcada. Cada cifra está calibrada contra el escenario sísmico Mw 9.0, la marea macareal del Pacífico panameño (5-6 m) y el sistema constructivo triángulo mágico (CLT + acero galvanizado + epoxy) ya establecido en el Plan Director.</p>
+
+        <div class="key-stats">
+            <div class="stat">
+                <div class="stat-num">152</div>
+                <div class="stat-unit" data-es="metros luz" data-en="m span">metros luz</div>
+            </div>
+            <div class="stat">
+                <div class="stat-num">2</div>
+                <div class="stat-unit" data-es="pilas en tierra" data-en="land piers">pilas en tierra</div>
+            </div>
+            <div class="stat">
+                <div class="stat-num">0</div>
+                <div class="stat-unit" data-es="pilas en agua" data-en="piers in water">pilas en agua</div>
+            </div>
+            <div class="stat">
+                <div class="stat-num">65</div>
+                <div class="stat-unit" data-es="m altura pilono" data-en="m pylon height">m altura pilono</div>
+            </div>
+            <div class="stat">
+                <div class="stat-num">+6</div>
+                <div class="stat-unit" data-es="m freeboard MSL" data-en="m freeboard MSL">m freeboard MSL</div>
+            </div>
+            <div class="stat">
+                <div class="stat-num">3.5</div>
+                <div class="stat-unit" data-es="m ancho tablero" data-en="m deck width">m ancho tablero</div>
+            </div>
+            <div class="stat">
+                <div class="stat-num">Mw 9</div>
+                <div class="stat-unit" data-es="resistencia sísmica" data-en="seismic resistance">resistencia sísmica</div>
+            </div>
+            <div class="stat">
+                <div class="stat-num">10:1</div>
+                <div class="stat-unit" data-es="compensación manglar" data-en="mangrove compensation">compensación manglar</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ TYPOLOGY COMPARISON ============ -->
+<section>
+    <div class="wrap">
+        <h2 data-es="Por qué atirantado · Comparativa" data-en="Why cable-stayed · Comparison">Por qué atirantado · Comparativa</h2>
+        <p class="lead" data-es="Cinco tipologías evaluadas. Solo una pasa el filtro simultáneo de (a) cero pilas en agua, (b) estética a la altura del resort, (c) viabilidad geotécnica en suelo aluvional, (d) comportamiento en sismo Mw 9, y (e) mantenimiento tropical." data-en="Five typologies evaluated. Only one passes the simultaneous filter of (a) zero piers in water, (b) aesthetics worthy of the resort, (c) geotechnical viability on alluvial soil, (d) Mw 9 seismic behavior, and (e) tropical maintenance.">Cinco tipologías evaluadas. Solo una pasa el filtro simultáneo de (a) cero pilas en agua, (b) estética a la altura del resort, (c) viabilidad geotécnica en suelo aluvional, (d) comportamiento en sismo Mw 9, y (e) mantenimiento tropical.</p>
+
+        <table class="cmp">
+            <thead>
+                <tr>
+                    <th data-es="Tipología" data-en="Typology">Tipología</th>
+                    <th data-es="Pilas en agua" data-en="Piers in water">Pilas en agua</th>
+                    <th data-es="Estética" data-en="Aesthetics">Estética</th>
+                    <th data-es="Geotécnica" data-en="Geotechnics">Geotécnica</th>
+                    <th data-es="Sismo Mw 9" data-en="Mw 9 Seismic">Sismo Mw 9</th>
+                    <th data-es="Mantenimiento tropical" data-en="Tropical maintenance">Mantenimiento tropical</th>
+                    <th data-es="Veredicto" data-en="Verdict">Veredicto</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="background:rgba(212,180,131,0.05)">
+                    <td><strong data-es="Atirantado" data-en="Cable-stayed">Atirantado</strong></td>
+                    <td data-es="0 (solo 2 en tierra)" data-en="0 (only 2 on land)">0 (solo 2 en tierra)</td>
+                    <td data-es="Excelente — landmark" data-en="Excellent — landmark">Excelente — landmark</td>
+                    <td data-es="Empuje solo vertical" data-en="Only vertical thrust">Empuje solo vertical</td>
+                    <td data-es="Ligero + dúctil" data-en="Light + ductile">Ligero + dúctil</td>
+                    <td data-es="Bajo (cables protegidos)" data-en="Low (protected cables)">Bajo (cables protegidos)</td>
+                    <td><strong style="color:var(--color-eco)" data-es="SELECCIONADO" data-en="SELECTED">SELECCIONADO</strong></td>
+                </tr>
+                <tr>
+                    <td data-es="Viga continua con pilas" data-en="Continuous beam with piers">Viga continua con pilas</td>
+                    <td data-es="2-3 en río" data-en="2-3 in river">2-3 en río</td>
+                    <td data-es="Industrial" data-en="Industrial">Industrial</td>
+                    <td data-es="Socavación de pilas" data-en="Pier scour">Socavación de pilas</td>
+                    <td data-es="Pesado, vulnerable" data-en="Heavy, vulnerable">Pesado, vulnerable</td>
+                    <td data-es="Alto (protección cathódica)" data-en="High (cathodic protection)">Alto (protección cathódica)</td>
+                    <td style="color:var(--color-sec)" data-es="Descartado" data-en="Discarded">Descartado</td>
+                </tr>
+                <tr>
+                    <td data-es="Arco" data-en="Arch">Arco</td>
+                    <td data-es="0-2" data-en="0-2">0-2</td>
+                    <td data-es="Clásico, pesado" data-en="Classic, heavy">Clásico, pesado</td>
+                    <td data-es="Empuje horizontal masivo" data-en="Massive horizontal thrust">Empuje horizontal masivo</td>
+                    <td data-es="Rígido, mal comportamiento" data-en="Rigid, poor behavior">Rígido, mal comportamiento</td>
+                    <td data-es="Medio" data-en="Medium">Medio</td>
+                    <td style="color:var(--color-sec)" data-es="Descartado" data-en="Discarded">Descartado</td>
+                </tr>
+                <tr>
+                    <td data-es="Suspensión clásica" data-en="Classic suspension">Suspensión clásica</td>
+                    <td data-es="0-2" data-en="0-2">0-2</td>
+                    <td data-es="Elegante pero flexible" data-en="Elegant but flexible">Elegante pero flexible</td>
+                    <td data-es="Aceptable" data-en="Acceptable">Aceptable</td>
+                    <td data-es="Vibración por viento crítica" data-en="Critical wind vibration">Vibración por viento crítica</td>
+                    <td data-es="Alto (cables principales)" data-en="High (main cables)">Alto (cables principales)</td>
+                    <td style="color:var(--color-sec)" data-es="Descartado" data-en="Discarded">Descartado</td>
+                </tr>
+                <tr>
+                    <td data-es="Cercha (truss)" data-en="Truss">Cercha (truss)</td>
+                    <td data-es="2-3" data-en="2-3">2-3</td>
+                    <td data-es="Industrial, rompe lenguaje" data-en="Industrial, breaks language">Industrial, rompe lenguaje</td>
+                    <td data-es="Aceptable" data-en="Acceptable">Aceptable</td>
+                    <td data-es="Bueno" data-en="Good">Bueno</td>
+                    <td data-es="Alto (muchos nudos)" data-en="High (many joints)">Alto (muchos nudos)</td>
+                    <td style="color:var(--color-sec)" data-es="Descartado" data-en="Discarded">Descartado</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="callout eco">
+            <h4 data-es="El argumento decisivo" data-en="The decisive argument">El argumento decisivo</h4>
+            <p data-es="Atirantado gana porque es la única tipología que pone cero pilas en el río. Esto significa: cero impacto en el manglar ribereño, cero socavación de pilas durante crecidas, cero permiso ambiental complejo por alteración de cauce, cero interferencia con navegación fluvial. El argumento ambiental refuerza el argumento arquitectónico: la solución más elegante es también la más responsable." data-en="Cable-stayed wins because it is the only typology that places zero piers in the river. This means: zero impact on riverside mangroves, zero pier scour during floods, zero complex environmental permits for channel alteration, zero interference with river navigation. The environmental argument reinforces the architectural argument: the most elegant solution is also the most responsible.">Atirantado gana porque es la única tipología que pone cero pilas en el río. Esto significa: cero impacto en el manglar ribereño, cero socavación de pilas durante crecidas, cero permiso ambiental complejo por alteración de cauce, cero interferencia con navegación fluvial. El argumento ambiental refuerza el argumento arquitectónico: la solución más elegante es también la más responsable.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ============ TECHNICAL SPECIFICATIONS ============ -->
+<section>
+    <div class="wrap">
+        <h2 data-es="Especificaciones Técnicas" data-en="Technical Specifications">Especificaciones Técnicas</h2>
+        <p class="lead" data-es="El sistema constructivo replicado del Plan Director: triángulo mágico (CLT + acero galvanizado + epoxy) ya validado para sismo Mw 9 en los Beach Houses y el Centro de Longevidad. Aplicado ahora a la tipología atirantada con aisladores elastoméricos LRB en cimentaciones." data-en="The construction system replicated from the Master Plan: magic triangle (CLT + galvanized steel + epoxy) already validated for Mw 9 earthquake in the Beach Houses and the Longevity Center. Now applied to the cable-stayed typology with LRB elastomeric isolators on foundations.">El sistema constructivo replicado del Plan Director: triángulo mágico (CLT + acero galvanizado + epoxy) ya validado para sismo Mw 9 en los Beach Houses y el Centro de Longevidad. Aplicado ahora a la tipología atirantada con aisladores elastoméricos LRB en cimentaciones.</p>
+
+        <div class="grid-3">
+            <div class="card">
+                <div class="tag" data-es="Pilonos" data-en="Pylons">Pilonos</div>
+                <h3 data-es="Acero galvanizado + epoxy" data-en="Galvanized steel + epoxy">Acero galvanizado + epoxy</h3>
+                <p data-es="Dos pilonos de 65 m, sección cuadrada cónica (2.5 m base → 1.2 m cima). Galvanizado en caliente G90 + triple capa epoxy marine-grade. Disposición de cables en arpa semi-fan (10-14 cables por pilono, plano vertical único). Cables galvanizados con grease + PE sheath." data-en="Two 65 m pylons, conical square section (2.5 m base → 1.2 m top). Hot-dip galvanized G90 + triple epoxy marine-grade coat. Cables in semi-fan harp layout (10-14 cables per pylon, single vertical plane). Galvanized cables with grease + PE sheath.">Dos pilonos de 65 m, sección cuadrada cónica (2.5 m base → 1.2 m cima). Galvanizado en caliente G90 + triple capa epoxy marine-grade. Disposición de cables en arpa semi-fan (10-14 cables por pilono, plano vertical único). Cables galvanizados con grease + PE sheath.</p>
+            </div>
+            <div class="card">
+                <div class="tag" data-es="Tablero" data-en="Deck">Tablero</div>
+                <h3 data-es="CLT + composite" data-en="CLT + composite">CLT + composite</h3>
+                <p data-es="Tablero CLT de 3.5 m de ancho × 0.4 m espesor. Capa epoxy de sellado tropical + baldosa de piedra natural travertino romano. Barandilla acristalada laminada (vidrio templado + PVB) en zonas de mirador, opaca en zonas de paso. Iluminación LED empotrada en canto + barandilla." data-en="3.5 m wide × 0.4 m thick CLT deck. Tropical epoxy sealing coat + natural travertine Roman stone tile. Laminated glass railing (tempered glass + PVB) at viewpoint zones, opaque at passage zones. LED lighting embedded in edge + railing.">Tablero CLT de 3.5 m de ancho × 0.4 m espesor. Capa epoxy de sellado tropical + baldosa de piedra natural travertino romano. Barandilla acristalada laminada (vidrio templado + PVB) en zonas de mirador, opaca en zonas de paso. Iluminación LED empotrada en canto + barandilla.</p>
+            </div>
+            <div class="card">
+                <div class="tag" data-es="Cimentación" data-en="Foundation">Cimentación</div>
+                <h3 data-es="Pilotes + losa + LRB" data-en="Piles + slab + LRB">Pilotes + losa + LRB</h3>
+                <p data-es="Pilotes PHC 800 mm × 15-20 m de profundidad empotrando 3 m en roca sana. Losa de enlace de 1.2 m de espesor conectando todos los pilotes. Aisladores elastoméricos con núcleo de plomo (LRB) entre losa y pilono — reduce fuerzas sísmicas 60-70% en tablero CLT." data-en="PHC piles 800 mm × 15-20 m depth embedded 3 m in sound rock. 1.2 m thick link slab connecting all piles. Elastomeric isolators with lead core (LRB) between slab and pylon — reduces seismic forces 60-70% in CLT deck.">Pilotes PHC 800 mm × 15-20 m de profundidad empotrando 3 m en roca sana. Losa de enlace de 1.2 m de espesor conectando todos los pilotes. Aisladores elastoméricos con núcleo de plomo (LRB) entre losa y pilono — reduce fuerzas sísmicas 60-70% en tablero CLT.</p>
+            </div>
+        </div>
+
+        <h3 data-es="Detalles de experiencia" data-en="Experience details" style="margin-top:3rem">Detalles de experiencia</h3>
+        <div class="grid-3">
+            <div class="card">
+                <div class="tag" data-es="Cubierta vegetal" data-en="Vegetal deck">Cubierta vegetal</div>
+                <p data-es="Deck CLT + baldosa piedra + jardineras laterales con flora autóctona (mangles enanos, orquídeas epífitas, bromelias). El puente se convierte en pasarela-botánico, no en infraestructura gris." data-en="CLT deck + stone tile + side planters with native flora (dwarf mangroves, epiphytic orchids, bromeliads). The bridge becomes a botanical walkway, not gray infrastructure.">Deck CLT + baldosa piedra + jardineras laterales con flora autóctona (mangles enanos, orquídeas epífitas, bromelias). El puente se convierte en pasarela-botánico, no en infraestructura gris.</p>
+            </div>
+            <div class="card">
+                <div class="tag" data-es="Mirador central" data-en="Central viewpoint">Mirador central</div>
+                <p data-es="Tablero ensanchado +1.5 m en el centro formando un mirador de 25 m² sobre el río. Bancos de madera + acristalamiento completo. Punto de observación de fauna (aves, delfines si presentes, manatíes)." data-en="Deck widened +1.5 m at center forming a 25 m² viewpoint over the river. Wooden benches + full glazing. Wildlife observation point (birds, dolphins if present, manatees).">Tablero ensanchado +1.5 m en el centro formando un mirador de 25 m² sobre el río. Bancos de madera + acristalamiento completo. Punto de observación de fauna (aves, delfines si presentes, manatíes).</p>
+            </div>
+            <div class="card">
+                <div class="tag" data-es="Pavimento luminiscente" data-en="Luminescent pavement">Pavimento luminiscente</div>
+                <p data-es="Baldosas con pigmento photoluminescent incrustado. Camino nocturno sin luz artificial directa — cero light pollution hacia manglar y fauna nocturna. Argumento ESG cuantificable para marketing internacional." data-en="Tiles with embedded photoluminescent pigment. Night path without direct artificial light — zero light pollution towards mangrove and nocturnal wildlife. Quantifiable ESG argument for international marketing.">Baldosas con pigmento photoluminescent incrustado. Camino nocturno sin luz artificial directa — cero light pollution hacia manglar y fauna nocturna. Argumento ESG cuantificable para marketing internacional.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ COST ============ -->
+<section>
+    <div class="wrap">
+        <h2 data-es="Inversión Orientativa" data-en="Indicative Investment">Inversión Orientativa</h2>
+        <p class="lead" data-es="Presupuesto orientativo por componente. Rango de $12,000-$20,000 USD por metro lineal — dentro del estándar para puentes peatonales atirantados con aislamiento sísmico en zonas tropicales remotas. Comparativa europea: $10-15k/m; el premium del 30-50% cubre logística tropical + sismo Mw 9 + aisladores LRB." data-en="Indicative budget by component. Range of $12,000-$20,000 USD per linear meter — within standard for cable-stayed pedestrian bridges with seismic isolation in remote tropical areas. European comparison: $10-15k/m; the 30-50% premium covers tropical logistics + Mw 9 earthquake + LRB isolators.">Presupuesto orientativo por componente. Rango de $12,000-$20,000 USD por metro lineal — dentro del estándar para puentes peatonales atirantados con aislamiento sísmico en zonas tropicales remotas. Comparativa europea: $10-15k/m; el premium del 30-50% cubre logística tropical + sismo Mw 9 + aisladores LRB.</p>
+
+        <table class="cmp cost-table">
+            <thead>
+                <tr>
+                    <th data-es="Componente" data-en="Component">Componente</th>
+                    <th class="num" data-es="Rango USD" data-en="Range USD">Rango USD</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td data-es="Estudios previos (geotécnico + batimetría + hidráulica + EIA)" data-en="Previous studies (geotechnical + bathymetry + hydraulics + EIA)">Estudios previos (geotécnico + batimetría + hidráulica + EIA)</td><td class="num">$80k–$120k</td></tr>
+                <tr><td data-es="Cimentación 2 pilonos (pilotes + cabezal + aisladores LRB)" data-en="2 pylon foundations (piles + cap + LRB isolators)">Cimentación 2 pilonos (pilotes + cabezal + aisladores LRB)</td><td class="num">$400k–$700k</td></tr>
+                <tr><td data-es="Pilonos acero galvanizado + epoxy (2 unidades, 65 m)" data-en="Galvanized steel + epoxy pylons (2 units, 65 m)">Pilonos acero galvanizado + epoxy (2 unidades, 65 m)</td><td class="num">$250k–$400k</td></tr>
+                <tr><td data-es="Cables atirante (10-14 cables, galvanizados + grease + PE sheath)" data-en="Stay cables (10-14 cables, galvanized + grease + PE sheath)">Cables atirante (10-14 cables, galvanizados + grease + PE sheath)</td><td class="num">$180k–$300k</td></tr>
+                <tr><td data-es="Tablero CLT + composite + barandilla acristalada + pavimento" data-en="CLT deck + composite + glass railing + pavement">Tablero CLT + composite + barandilla acristalada + pavimento</td><td class="num">$400k–$600k</td></tr>
+                <tr><td data-es="Iluminación + mobiliario (banco, sombreado, signage)" data-en="Lighting + furniture (bench, shading, signage)">Iluminación + mobiliario (banco, sombreado, signage)</td><td class="num">$80k–$150k</td></tr>
+                <tr><td data-es="Montaje (barcaza + grúa flotante + izado)" data-en="Assembly (barge + floating crane + lifting)">Montaje (barcaza + grúa flotante + izado)</td><td class="num">$200k–$350k</td></tr>
+                <tr><td data-es="Honorarios ingeniería + dirección obra + seguros" data-en="Engineering fees + project management + insurance">Honorarios ingeniería + dirección obra + seguros</td><td class="num">$200k–$350k</td></tr>
+                <tr class="total"><td><strong data-es="TOTAL ORIENTATIVO" data-en="ESTIMATED TOTAL">TOTAL ORIENTATIVO</strong></td><td class="num"><strong>$1.8M–$3.0M USD</strong></td></tr>
+            </tbody>
+        </table>
+
+        <div class="callout">
+            <h4 data-es="Lectura financiera" data-en="Financial reading">Lectura financiera</h4>
+            <p data-es="El puente cuesta lo que una Beach House de entrada. Pero su valor no está en su capex — está en su contribución al positioning de La Porcada como destino memorable. Las fotos del puente amortizan su capex con la primera campaña internacional en Condé Nast Traveller." data-en="The bridge costs the same as an entry-level Beach House. But its value is not in its capex — it is in its contribution to positioning La Porcada as a memorable destination. The bridge photos amortize its capex with the first international campaign in Condé Nast Traveller.">El puente cuesta lo que una Beach House de entrada. Pero su valor no está en su capex — está en su contribución al positioning de La Porcada como destino memorable. Las fotos del puente amortizan su capex con la primera campaña internacional en Condé Nast Traveller.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ============ REFERENCES ============ -->
+<section>
+    <div class="wrap">
+        <h2 data-es="Referencias Arquitectónicas" data-en="Architectural References">Referencias Arquitectónicas</h2>
+        <p class="lead" data-es="Cinco referencias que el equipo de Denniston debe estudiar antes de empezar el anteproyecto. No para copiar — para entender el lenguaje que La Porcada debe superar." data-en="Five references the Denniston team must study before starting the schematic design. Not to copy — to understand the language that La Porcada must surpass.">Cinco referencias que el equipo de Denniston debe estudiar antes de empezar el anteproyecto. No para copiar — para entender el lenguaje que La Porcada debe superar.</p>
+
+        <div class="refs-grid">
+            <div class="ref-card">
+                <div class="ref-name" data-es="Lo Passador" data-en="Lo Passador">Lo Passador</div>
+                <div class="ref-loc" data-es="Delta de l'Ebre, 2011" data-en="Ebro Delta, 2011">Delta de l'Ebre, 2011</div>
+                <div class="ref-note" data-es="Puente peatonal y ciclista de suspensión que une Deltebre y Sant Jaume d'Enveja sobre el río Ebro. 377 m de luz en pleno Parc Natural del Delta (Reserva de la Biosfera UNESCO). No es un monumento: es un puente real en entorno protegido que se convirtió en icono regional y destino turístico. El referente más cercano al modelo La Porcada." data-en="Pedestrian and cyclist suspension bridge uniting Deltebre and Sant Jaume d'Enveja over the Ebro river. 377 m span in the heart of the Parc Natural del Delta (UNESCO Biosphere Reserve). Not a monument: a real bridge in a protected environment that became a regional icon and tourist destination. The closest reference to the La Porcada model.">Puente peatonal y ciclista de suspensión que une Deltebre y Sant Jaume d'Enveja sobre el río Ebro. 377 m de luz en pleno Parc Natural del Delta (Reserva de la Biosfera UNESCO). No es un monumento: es un puente real en entorno protegido que se convirtió en icono regional y destino turístico. El referente más cercano al modelo La Porcada.</div>
+            </div>
+            <div class="ref-card">
+                <div class="ref-name" data-es="Musmelec Bridge" data-en="Musmelec Bridge">Musmelec Bridge</div>
+                <div class="ref-loc" data-es="Babahoyo, Ecuador" data-en="Babahoyo, Ecuador">Babahoyo, Ecuador</div>
+                <div class="ref-note" data-es="1,260 m de atirantado mixto vehicular-peatonal en trópico húmedo. Referencia técnica de comportamiento en clima tropical con humedad extrema." data-en="1,260 m of mixed vehicular-pedestrian cable-stayed in humid tropics. Technical reference for behavior in extreme humidity tropical climate.">1,260 m de atirantado mixto vehicular-peatonal en trópico húmedo. Referencia técnica de comportamiento en clima tropical con humedad extrema.</div>
+            </div>
+            <div class="ref-card">
+                <div class="ref-name" data-es="Puente de la Mujer" data-en="Puente de la Mujer">Puente de la Mujer</div>
+                <div class="ref-loc" data-es="Buenos Aires · Calatrava" data-en="Buenos Aires · Calatrava">Buenos Aires · Calatrava</div>
+                <div class="ref-note" data-es="Atirantado asimétrico peatonal, 170 m. Referencia estética de cómo un puente peatonal puede convertirse en escultura urbana y símbolo de un barrio." data-en="Asymmetric cable-stayed pedestrian, 170 m. Aesthetic reference of how a pedestrian bridge can become urban sculpture and symbol of a neighborhood.">Atirantado asimétrico peatonal, 170 m. Referencia estética de cómo un puente peatonal puede convertirse en escultura urbana y símbolo de un barrio.</div>
+            </div>
+            <div class="ref-card">
+                <div class="ref-name" data-es="Capilano Suspension" data-en="Capilano Suspension">Capilano Suspension</div>
+                <div class="ref-loc" data-es="Vancouver, 140 m" data-en="Vancouver, 140 m">Vancouver, 140 m</div>
+                <div class="ref-note" data-es="Modelo de puente turístico peatonal en entorno natural sensible. Cómo operar un icono con millones de visitantes sin destruir el ecosistema que lo sostiene." data-en="Model of tourist pedestrian bridge in sensitive natural environment. How to operate an icon with millions of visitors without destroying the ecosystem that sustains it.">Modelo de puente turístico peatonal en entorno natural sensible. Cómo operar un icono con millones de visitantes sin destruir el ecosistema que lo sostiene.</div>
+            </div>
+            <div class="ref-card">
+                <div class="ref-name" data-es="CLT Bridges CH/NO" data-en="CLT Bridges CH/NO">CLT Bridges CH/NO</div>
+                <div class="ref-loc" data-es="Suiza & Noruega" data-en="Switzerland & Norway">Suiza & Noruega</div>
+                <div class="ref-note" data-es="Puentes peatonales de CLT en clima húmedo: Remseck (DE, 80 m), Skjeggedal (NO). Referencia material del comportamiento del CLT en exterior expuesto con precipitación y humedad alta." data-en="CLT pedestrian bridges in humid climate: Remseck (DE, 80 m), Skjeggedal (NO). Material reference for CLT behavior in outdoor exposure with precipitation and high humidity.">Puentes peatonales de CLT en clima húmedo: Remseck (DE, 80 m), Skjeggedal (NO). Referencia material del comportamiento del CLT en exterior expuesto con precipitación y humedad alta.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ CLOSING MANIFESTO ============ -->
+<section class="manifesto">
+    <div class="wrap">
+        <div class="opening" data-es="En 2011 el Delta del Ebro tendió un puente de cables de 377 metros para que el mundo lo recorriera. En 2026 La Porcada tenderá un puente de cables dorados de 152 metros para que el mundo lo recuerde. La diferencia no es de ingeniería. Es de intención." data-en="In 2011 the Ebro Delta stretched a 377-meter cable bridge so the world would walk it. In 2026 La Porcada will stretch a 152-meter golden cable bridge so the world remembers it. The difference is not engineering. It is intention.">En 2011 el Delta del Ebro tendió un puente de cables de 377 metros para que el mundo lo recorriera. En 2026 La Porcada tenderá un puente de cables dorados de 152 metros para que el mundo lo recuerde. La diferencia no es de ingeniería. Es de intención.</div>
+        <div class="signature">
+            <img src="images/ECORESORT.PNG" alt="EcoResort" class="sig-logo" onerror="this.style.display='none'">
+            <div class="sig-text" data-es="EcoResort La Porcada · Takyma 2026" data-en="EcoResort La Porcada · Takyma 2026">EcoResort La Porcada · Takyma 2026</div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+    <div class="wrap">
+        <img src="images/ECORESORT.PNG" alt="EcoResort La Porcada" class="eco-logo" onerror="this.style.display='none'">
+        <div class="sig">EcoResort La Porcada</div>
+        <div class="tagline">by Takyma Investment Pioneer</div>
+        <div class="copyright">
+            © 2026 <strong>EcoResort La Porcada</strong> by <strong>Takyma Investment Pioneer</strong>
+            <br><span data-es="Todos los derechos reservados · Manifiesto arquitectónico confidencial" data-en="All rights reserved · Confidential architectural manifesto">Todos los derechos reservados · Manifiesto arquitectónico confidencial</span>
+        </div>
+    </div>
+</footer>
+
+<script>
+    let currentLang = 'ES';
+
+    function toggleLanguage() {
+        currentLang = currentLang === 'ES' ? 'EN' : 'ES';
+        const btn = document.getElementById('langBtn');
+        btn.innerText = currentLang === 'ES' ? '🌐 English' : '🌐 Español';
+        document.documentElement.lang = currentLang.toLowerCase();
+
+        const elements = document.querySelectorAll('[data-es][data-en]');
+        elements.forEach(el => {
+            const value = currentLang === 'ES' ? el.getAttribute('data-es') : el.getAttribute('data-en');
+            if (value !== null) {
+                if (value.includes('<')) {
+                    el.innerHTML = value;
+                } else {
+                    el.innerText = value;
+                }
+            }
+        });
+    }
+</script>
+
+</body>
+</html>
